@@ -65,20 +65,34 @@ public class DateUtils {
         return getLastDayOfWeek(cal.getTime());
     }
 
+    // /**
+    //  * 取得当前日期所在周的第一天
+    //  *
+    //  * @param date
+    //  * @return
+    //  */
+    // public static Date getFirstDayOfWeek(Date date) {
+    //     Calendar calendar = Calendar.getInstance();
+    //     calendar.setFirstDayOfWeek(Calendar.SUNDAY);
+    //     calendar.setTime(date);
+    //     calendar.set(Calendar.DAY_OF_WEEK,
+    //             calendar.getFirstDayOfWeek()); // Sunday
+    //     return calendar.getTime();
+    // }
+
     /**
-     * 取得当前日期所在周的第一天
-     *
-     * @param date
-     * @return
-     */
-    public static Date getFirstDayOfWeek(Date date) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setFirstDayOfWeek(Calendar.SUNDAY);
-        calendar.setTime(date);
-        calendar.set(Calendar.DAY_OF_WEEK,
-                calendar.getFirstDayOfWeek()); // Sunday
-        return calendar.getTime();
-    }
+ * 返回指定日期的周的第一天(第一天为星期一)
+ *
+ * @return
+ */
+public static Date getFirstDayOfWeek(Date date) {
+
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(date);
+    calendar.add(Calendar.DAY_OF_MONTH, -1);
+    calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+    return calendar.getTime();
+}
 
     /**
      * 取得当前日期所在周的最后一天
